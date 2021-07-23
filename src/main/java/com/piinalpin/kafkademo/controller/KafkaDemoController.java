@@ -1,6 +1,6 @@
 package com.piinalpin.kafkademo.controller;
 
-import com.piinalpin.kafkademo.service.KafkaProducerService;
+import com.piinalpin.kafkademo.service.KafkaPublisherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,7 +14,7 @@ import java.util.Map;
 public class KafkaDemoController {
 
     @Autowired
-    private KafkaProducerService kafkaProducerService;
+    private KafkaPublisherService kafkaPublisherService;
 
     @GetMapping(value = "/")
     public Map<String, String> main() {
@@ -24,7 +24,7 @@ public class KafkaDemoController {
     @PostMapping(value = "/greeting")
     public Map<String, String> greeting(@RequestBody Map<String, String> request) {
         if (null != request.get("greeting")) {
-            kafkaProducerService.send(request.get("greeting"));
+            kafkaPublisherService.send(request.get("greeting"));
         }
         return okMessage("Sending message...");
     }

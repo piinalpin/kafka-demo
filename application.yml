@@ -2,7 +2,3 @@ kafka:
   bootstrapAddress: "http://localhost:9092"
 server:
   port: 8080
-spring:
-  kafka:
-    consumer:
-      group-id: "maverick-group-id"

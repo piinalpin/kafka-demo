@@ -11,7 +11,7 @@ public class KafkaConsumerService {
 
     private final static Logger log = LoggerFactory.getLogger(KafkaConsumerService.class);
 
-    @KafkaListener(topics = KafkaTopicConstant.HELLO_WORLD)
+    @KafkaListener(topics = KafkaTopicConstant.HELLO_WORLD, containerFactory = "greeting")
     public void greeting(String payload) {
         log.info(String.format("Received payload: %s", payload));
     }
